@@ -6,11 +6,11 @@ import tkinter as Tk
 
 class Model:
     """
-    Model class, abstracts the core data of the MVC pattern.
+    Model class, abstracts the core data of the MVC pattern,
     Model maintains updates data based on events/calls it receives
     from Controller. Dependency should be one-way, Controller to Model,
     in other words, Model functions should NOT actively call methods of
-    Controller or View.
+    Controller or View
     """
 
     def __init__(self):
@@ -110,6 +110,7 @@ class View:
 
     def refresh(self, value):
         self.display.config(text=value)
+        print('\n...Value: [ ', value, ' ]')
 
     def attach_keyboard(self, callback):
         self.root.bind("<Key>", callback)
@@ -129,20 +130,25 @@ class Controller:
         self.model = my_model
         self.view = my_view
 
-        self.view.one.bind("<Button>", lambda event, n=1: self.num_callback(n))
-        self.view.two.bind("<Button>", lambda event, n=2: self.num_callback(n))
-        self.view.three.bind("<Button>", lambda event, n=3: self.num_callback(n))
-        self.view.four.bind("<Button>", lambda event, n=4: self.num_callback(n))
-        self.view.five.bind("<Button>", lambda event, n=5: self.num_callback(n))
-        self.view.six.bind("<Button>", lambda event, n=6: self.num_callback(n))
-        self.view.seven.bind("<Button>", lambda event, n=7: self.num_callback(n))
-        self.view.eight.bind("<Button>", lambda event, n=8: self.num_callback(n))
-        self.view.nine.bind("<Button>", lambda event, n=9: self.num_callback(n))
-        self.view.zero.bind("<Button>", lambda event, n=0: self.num_callback(n))
-        self.view.add.bind("<Button>", lambda event, op='+': self.operation_callback(op))
-        self.view.sub.bind("<Button>", lambda event, op='-': self.operation_callback(op))
-        self.view.mul.bind("<Button>", lambda event, op='*': self.operation_callback(op))
-        self.view.div.bind("<Button>", lambda event, op='/': self.operation_callback(op))
+        # Number Pad Button Events
+        self.view.one.bind("<Button>", lambda event, n=1: self.number_pad_callback(n))
+        self.view.two.bind("<Button>", lambda event, n=2: self.number_pad_callback(n))
+        self.view.three.bind("<Button>", lambda event, n=3: self.number_pad_callback(n))
+        self.view.four.bind("<Button>", lambda event, n=4: self.number_pad_callback(n))
+        self.view.five.bind("<Button>", lambda event, n=5: self.number_pad_callback(n))
+        self.view.six.bind("<Button>", lambda event, n=6: self.number_pad_callback(n))
+        self.view.seven.bind("<Button>", lambda event, n=7: self.number_pad_callback(n))
+        self.view.eight.bind("<Button>", lambda event, n=8: self.number_pad_callback(n))
+        self.view.nine.bind("<Button>", lambda event, n=9: self.number_pad_callback(n))
+        self.view.zero.bind("<Button>", lambda event, n=0: self.number_pad_callback(n))
+
+        # Operator Pad Button Events
+        self.view.add.bind("<Button>", lambda event, op='+': self.operation_pad_callback(op))
+        self.view.sub.bind("<Button>", lambda event, op='-': self.operation_pad_callback(op))
+        self.view.mul.bind("<Button>", lambda event, op='*': self.operation_pad_callback(op))
+        self.view.div.bind("<Button>", lambda event, op='/': self.operation_pad_callback(op))
+
+        # Equal and Clear Button Events
         self.view.equal.bind("<Button>", self.equal)
         self.view.clear.bind("<Button>", self.clear)
 
@@ -157,12 +163,12 @@ class Controller:
         """
         print('keystroke: {}'.format(event.keysym))
 
-    def num_callback(self, num):
+    def number_pad_callback(self, num):
         self.model.event(str(num))
         self.view.refresh(self.model.value)
         print('number {} is clicked'.format(num))
 
-    def operation_callback(self, operation):
+    def operation_pad_callback(self, operation):
         self.model.event(operation)
         self.view.refresh(self.model.value)
         print('operation: {}'.format(operation))
@@ -182,7 +188,7 @@ class Controller:
 
 if __name__ == '__main__':
     """
-    Main function, instantiate instances of Model, View and a Controller
+    Main function, instantiate instances of Model, View and a Controller.
     """
 
     model = Model()
