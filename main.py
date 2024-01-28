@@ -191,8 +191,16 @@ if __name__ == '__main__':
     Main function, instantiate instances of Model, View and a Controller.
     """
 
+    # This simply prints out your current Python version for awareness.
+    import sys
+
+    print('-----')
+    print('Python Version: {python_version}'.format(python_version=sys.version))
+    print('-----')
+
+    # Instantiate the Model, View, and Controller
     model = Model()
     view = View()
-
     controller = Controller(my_model=model, my_view=view)
     controller.run()
+
