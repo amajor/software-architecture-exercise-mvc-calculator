@@ -156,10 +156,11 @@ class Controller:
 
     def keystroke_callback(self, event):
         """
-        TODO: Add to this method to add keyboard callbacks!
-        This is where you handle keystroke events from user,
-        controller should invoke necessary methods on view and
-        refresh view
+        TODO: Make updates in this method for keyboard events!
+
+        This is where you will handle keystroke events from user
+        and then (the Controller) should invoke necessary methods
+        on the View and and refresh the View
         """
         print('keystroke: {}'.format(event.keysym))
 
