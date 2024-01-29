@@ -41,6 +41,9 @@ In a well-designed MVC architecture, Controllers are decoupled from the Views, a
 The MVC design pattern helps to achieve separation of concerns, making it easier to modify or extend one component without affecting the others. It is commonly used in various frameworks and technologies, including web development (e.g., with frameworks like Ruby on Rails and Django) and desktop application development.
 
 # MVC Exercise
+
+📺 [Model-View-Controller (MVC) Exercise](https://youtu.be/YbPOTAeoPV4)
+
 In this exercise, you are given a GUI-based Python implementation of a simple calculator (see the file `main.py`). The design follows the MVC pattern.
 
 1. Download the file [`main.py`](./main.py) to your computer.
